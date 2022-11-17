@@ -1,6 +1,6 @@
 import pygame
 import sys
-                            #written by Bryce Woodford and Binyamin Abukar
+                            #written by Bryce Woodard and Binyamin Abukar
 
 
 def player_animation():
