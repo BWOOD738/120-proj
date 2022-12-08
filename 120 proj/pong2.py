@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
                             #written by Bryce Woodard and Binyamin Abukar
 
 
@@ -19,7 +20,8 @@ def player2_animation():
     if player2.bottom >= height:
         player2.bottom = height
 
-
+def b_reset():
+    ball.center = (335,235)
 pygame.init()
 fps = pygame.time.Clock()
 
@@ -36,7 +38,7 @@ speedx = 8
 speedy = 5
 speedPlayer = 0
 
-BALL_RADIUS = 40
+BALL_RADIUS = 20
 PAD_WIDTH = 8
 PAD_HEIGHT = 140
 ball = pygame.Rect(335,235,BALL_RADIUS,BALL_RADIUS)
@@ -62,13 +64,20 @@ def SetText(screen, text, x, y):
 
     except Exception as e:
         print ("Font Error")
-        raise e 
+        raise e
 
-# Function to reset the ball position after a win, however it keeps the speed 
+# Function to reset the ball position after a win, however it keeps the speed
 def Reset():
+    global speedx, speedy
+    num = random.random()
+    num = num % 2
+    if num == 1:
+        speedx *= -1
+        speedy *= -1
     ball.x = 325
     ball.y = 325
-
+    speedy *= random.choice((1,-1))
+    speedx *= random.choice((1,-1))
 while True:
 
     for event in pygame.event.get():
